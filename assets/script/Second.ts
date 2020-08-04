@@ -250,6 +250,10 @@ export default class NewClass extends cc.Component {
     this.start();
   }
 
+  onClickExitBtn() {
+    cc.director.loadScene("First");
+  }
+
   start() {
     this.playerNameLabel.enabled = true;
     this.resultBoard.active = false;
