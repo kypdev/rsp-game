@@ -1,0 +1,8 @@
+{
+  "engine": "cocos-creator-js",
+  "packages": "packages",
+  "name": "RockPaperScissors",
+  "id": "6d6854b3-5ff3-4fe8-a6e1-421842a1d763",
+  "version": "2.3.3",
+  "isNew": false
+}
