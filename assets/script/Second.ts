@@ -251,7 +251,7 @@ export default class NewClass extends cc.Component {
   }
 
   onClickExitBtn() {
-    cc.director.loadScene("First");
+    cc.director.loadScene("Playername");
   }
 
   start() {

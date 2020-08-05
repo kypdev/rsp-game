@@ -11,6 +11,10 @@ const { ccclass, property } = cc._decorator;
 export default class NewClass extends cc.Component {
   @property(cc.Node)
   playerName: cc.Node;
+  @property(cc.Node)
+  alertVal: cc.Node;
+  @property(cc.Node)
+  alertBtn: cc.Node;
 
   savePlayerName() {
     var pname = this.playerName
@@ -22,11 +26,17 @@ export default class NewClass extends cc.Component {
 
     if (pname.match(regex)) {
       console.log("val ok");
-      localStorage.setItem('pname', pname)
-      cc.director.loadScene('Second')
+      localStorage.setItem("pname", pname);
+      cc.director.loadScene("Second");
     } else {
       console.log("val failed");
+      this.alertVal.active = true;
+      
     }
+  }
+
+  onClickAlertBtn() {
+    this.alertVal.active = false;
   }
 
   // LIFE-CYCLE CALLBACKS:
