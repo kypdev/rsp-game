@@ -19,6 +19,13 @@ export default class NewClass extends cc.Component {
   comHistory: Array<number>;
   countRound: number;
 
+  @property(cc.Node)
+  rockClicked: cc.Node;
+  @property(cc.Node)
+  scissorClicked: cc.Node;
+  @property(cc.Node)
+  paperClicked: cc.Node;
+
   @property(cc.Label)
   resultLabel: cc.Label;
   @property(cc.Label)
@@ -145,6 +152,30 @@ export default class NewClass extends cc.Component {
 
   playerChoose(e, choice: number) {
     this.pchoice = choice;
+
+    if (choice == 0) {
+      this.prock.active = false;
+      this.rockClicked.active = true;
+      this.scissorClicked.active = false;
+      this.pscissor.active = true;
+      this.paperClicked.active = false;
+      this.ppaper.active = true;
+    } else if (choice == 1) {
+      this.pscissor.active = false;
+      this.scissorClicked.active = true;
+      this.prock.active = true;
+      this.rockClicked.active = false;
+      this.paperClicked.active = false;
+      this.ppaper.active = true;
+    } else if (choice == 2) {
+      this.ppaper.active = false;
+      this.paperClicked.active = true;
+      this.prock.active = true;
+      this.rockClicked.active = false;
+      this.scissorClicked.active = false;
+      this.pscissor.active = true;
+    }
+
     this.confirmBtn.active = true;
   }
 
@@ -516,6 +547,9 @@ export default class NewClass extends cc.Component {
     this.win.active = false;
     this.lose.active = false;
     this.tie.active = false;
+    this.rockClicked.active = false
+    this.scissorClicked.active = false
+    this.paperClicked.active = false
   }
 
   // update(label){
