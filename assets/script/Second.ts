@@ -154,7 +154,6 @@ export default class NewClass extends cc.Component {
     var p = this.pchoice;
     var c = this.cChoice;
 
-    let i = 0;
 
     if (p == 0 && c == 0) {
       // console.log("tie");
@@ -219,6 +218,21 @@ export default class NewClass extends cc.Component {
   showComHis() {
     console.log(this.comHistory.length);
     
+    // for(let i=0; i<5; i++){
+    //   if (this.comHistory[i] == 0) {
+    //     this.cr1.active = true;
+    //     this.cs1.active = false;
+    //     this.cp1.active = false;
+    //   } else if (this.comHistory[i] == 1) {
+    //     this.cr1.active = false;
+    //     this.cs1.active = true;
+    //     this.cp1.active = false;
+    //   } else if (this.comHistory[i] == 2) {
+    //     this.cr1.active = false;
+    //     this.cs1.active = false;
+    //     this.cp1.active = true;
+    //   }
+    // }
 
     // Round1
     if (this.comHistory[0] == 0) {
@@ -331,7 +345,6 @@ export default class NewClass extends cc.Component {
       this.resultLabel.string = "แพ้";
       this.pPoint.string = this.playerPoint.toString();
       this.cPoint.string = this.comPoint.toString();
-      this.showComHis();
       console.log("COM WINNER");
       console.log("PLAYER RESULT: " + this.playerHistory);
       console.log("COM RESULT: " + this.comHistory);
@@ -395,8 +408,8 @@ export default class NewClass extends cc.Component {
     this.cChoice = 0;
     this.playerPoint = 0;
     this.comPoint = 0;
-    this.playerHistory = Array();
-    this.comHistory = Array();
+    this.playerHistory = []
+    this.comHistory = []
     this.countRound = 0;
     this.resultLabel.string = "";
     this.prock.active = true;
