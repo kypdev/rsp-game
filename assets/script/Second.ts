@@ -69,6 +69,7 @@ export default class NewClass extends cc.Component {
   @property(cc.Node)
   cp5: cc.Node;
 
+  // Player History
   @property(cc.Node)
   pr1: cc.Node;
   @property(cc.Node)
@@ -82,6 +83,27 @@ export default class NewClass extends cc.Component {
   ps2: cc.Node;
   @property(cc.Node)
   pp2: cc.Node;
+
+  @property(cc.Node)
+  pr3: cc.Node;
+  @property(cc.Node)
+  ps3: cc.Node;
+  @property(cc.Node)
+  pp3: cc.Node;
+
+  @property(cc.Node)
+  pr4: cc.Node;
+  @property(cc.Node)
+  ps4: cc.Node;
+  @property(cc.Node)
+  pp4: cc.Node;
+
+  @property(cc.Node)
+  pr5: cc.Node;
+  @property(cc.Node)
+  ps5: cc.Node;
+  @property(cc.Node)
+  pp5: cc.Node;
 
   // Play result    @property(cc.Node)
   @property(cc.Node)
@@ -154,7 +176,6 @@ export default class NewClass extends cc.Component {
     var p = this.pchoice;
     var c = this.cChoice;
 
-
     if (p == 0 && c == 0) {
       // console.log("tie");
       this.playerHistory.push(p);
@@ -216,24 +237,6 @@ export default class NewClass extends cc.Component {
   }
 
   showComHis() {
-    console.log(this.comHistory.length);
-    
-    // for(let i=0; i<5; i++){
-    //   if (this.comHistory[i] == 0) {
-    //     this.cr1.active = true;
-    //     this.cs1.active = false;
-    //     this.cp1.active = false;
-    //   } else if (this.comHistory[i] == 1) {
-    //     this.cr1.active = false;
-    //     this.cs1.active = true;
-    //     this.cp1.active = false;
-    //   } else if (this.comHistory[i] == 2) {
-    //     this.cr1.active = false;
-    //     this.cs1.active = false;
-    //     this.cp1.active = true;
-    //   }
-    // }
-
     // Round1
     if (this.comHistory[0] == 0) {
       this.cr1.active = true;
@@ -310,6 +313,85 @@ export default class NewClass extends cc.Component {
     }
   }
 
+  showPlayHis() {
+    console.log("player history" + this.playerHistory[0]);
+
+    // Round1
+    if (this.playerHistory[0] == 0) {
+      this.pr1.active = true;
+      this.ps1.active = false;
+      this.pp1.active = false;
+    } else if (this.playerHistory[0] == 1) {
+      this.pr1.active = false;
+      this.ps1.active = true;
+      this.pp1.active = false;
+    } else if (this.playerHistory[0] == 2) {
+      this.pr1.active = false;
+      this.ps1.active = false;
+      this.pp1.active = true;
+    }
+
+    // Round2
+    if (this.playerHistory[1] == 0) {
+      this.pr2.active = true;
+      this.ps2.active = false;
+      this.pp2.active = false;
+    } else if (this.playerHistory[1] == 1) {
+      this.pr2.active = false;
+      this.ps2.active = true;
+      this.pp2.active = false;
+    } else if (this.playerHistory[1] == 2) {
+      this.pr2.active = false;
+      this.ps2.active = false;
+      this.pp2.active = true;
+    }
+
+    // Round3
+    if (this.playerHistory[2] == 0) {
+      this.pr3.active = true;
+      this.ps3.active = false;
+      this.pp3.active = false;
+    } else if (this.playerHistory[2] == 1) {
+      this.pr3.active = false;
+      this.ps3.active = true;
+      this.pp3.active = false;
+    } else if (this.playerHistory[2] == 2) {
+      this.pr3.active = false;
+      this.ps3.active = false;
+      this.pp3.active = true;
+    }
+
+    // Round4
+    if (this.playerHistory[3] == 0) {
+      this.pr4.active = true;
+      this.ps4.active = false;
+      this.pp4.active = false;
+    } else if (this.playerHistory[3] == 1) {
+      this.pr4.active = false;
+      this.ps4.active = true;
+      this.pp4.active = false;
+    } else if (this.playerHistory[3] == 2) {
+      this.pr4.active = false;
+      this.ps4.active = false;
+      this.pp4.active = true;
+    }
+
+    // Round5
+    if (this.playerHistory[4] == 0) {
+      this.pr5.active = true;
+      this.ps5.active = false;
+      this.pp5.active = false;
+    } else if (this.playerHistory[4] == 1) {
+      this.pr5.active = false;
+      this.ps5.active = true;
+      this.pp5.active = false;
+    } else if (this.playerHistory[4] == 2) {
+      this.pr5.active = false;
+      this.ps5.active = false;
+      this.pp5.active = true;
+    }
+  }
+
   onClickConfirmBtn() {
     this.comChoice();
     this.win.active = false;
@@ -318,6 +400,7 @@ export default class NewClass extends cc.Component {
     this.checkResult();
     this.countRound++;
     this.showComHis();
+    this.showPlayHis();
 
     // Player 3 wins
     if (this.playerPoint >= 3) {
@@ -408,8 +491,8 @@ export default class NewClass extends cc.Component {
     this.cChoice = 0;
     this.playerPoint = 0;
     this.comPoint = 0;
-    this.playerHistory = []
-    this.comHistory = []
+    this.playerHistory = [];
+    this.comHistory = [];
     this.countRound = 0;
     this.resultLabel.string = "";
     this.prock.active = true;
