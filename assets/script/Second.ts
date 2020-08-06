@@ -34,6 +34,55 @@ export default class NewClass extends cc.Component {
   @property(cc.Node)
   exitBtn: cc.Node;
 
+  @property(cc.Node)
+  cr1: cc.Node;
+  @property(cc.Node)
+  cs1: cc.Node;
+  @property(cc.Node)
+  cp1: cc.Node;
+
+  @property(cc.Node)
+  cr2: cc.Node;
+  @property(cc.Node)
+  cs2: cc.Node;
+  @property(cc.Node)
+  cp2: cc.Node;
+
+  @property(cc.Node)
+  cr3: cc.Node;
+  @property(cc.Node)
+  cs3: cc.Node;
+  @property(cc.Node)
+  cp3: cc.Node;
+
+  @property(cc.Node)
+  cr4: cc.Node;
+  @property(cc.Node)
+  cs4: cc.Node;
+  @property(cc.Node)
+  cp4: cc.Node;
+
+  @property(cc.Node)
+  cr5: cc.Node;
+  @property(cc.Node)
+  cs5: cc.Node;
+  @property(cc.Node)
+  cp5: cc.Node;
+
+  @property(cc.Node)
+  pr1: cc.Node;
+  @property(cc.Node)
+  ps1: cc.Node;
+  @property(cc.Node)
+  pp1: cc.Node;
+
+  @property(cc.Node)
+  pr2: cc.Node;
+  @property(cc.Node)
+  ps2: cc.Node;
+  @property(cc.Node)
+  pp2: cc.Node;
+
   // Play result    @property(cc.Node)
   @property(cc.Node)
   lose: cc.Node;
@@ -167,6 +216,86 @@ export default class NewClass extends cc.Component {
     console.log("chis: " + this.comHistory);
   }
 
+  showComHis() {
+    console.log(this.comHistory.length);
+    
+
+    // Round1
+    if (this.comHistory[0] == 0) {
+      this.cr1.active = true;
+      this.cs1.active = false;
+      this.cp1.active = false;
+    } else if (this.comHistory[0] == 1) {
+      this.cr1.active = false;
+      this.cs1.active = true;
+      this.cp1.active = false;
+    } else if (this.comHistory[0] == 2) {
+      this.cr1.active = false;
+      this.cs1.active = false;
+      this.cp1.active = true;
+    }
+
+    // Round2
+    if (this.comHistory[1] == 0) {
+      this.cr2.active = true;
+      this.cs2.active = false;
+      this.cp2.active = false;
+    } else if (this.comHistory[1] == 1) {
+      this.cr2.active = false;
+      this.cs2.active = true;
+      this.cp2.active = false;
+    } else if (this.comHistory[1] == 2) {
+      this.cr2.active = false;
+      this.cs2.active = false;
+      this.cp2.active = true;
+    }
+
+    // Round3
+    if (this.comHistory[2] == 0) {
+      this.cr3.active = true;
+      this.cs3.active = false;
+      this.cp3.active = false;
+    } else if (this.comHistory[2] == 1) {
+      this.cr3.active = false;
+      this.cs3.active = true;
+      this.cp3.active = false;
+    } else if (this.comHistory[2] == 2) {
+      this.cr3.active = false;
+      this.cs3.active = false;
+      this.cp3.active = true;
+    }
+
+    // Round4
+    if (this.comHistory[3] == 0) {
+      this.cr4.active = true;
+      this.cs4.active = false;
+      this.cp4.active = false;
+    } else if (this.comHistory[3] == 1) {
+      this.cr4.active = false;
+      this.cs4.active = true;
+      this.cp4.active = false;
+    } else if (this.comHistory[3] == 2) {
+      this.cr4.active = false;
+      this.cs4.active = false;
+      this.cp4.active = true;
+    }
+
+    // Round5
+    if (this.comHistory[4] == 0) {
+      this.cr5.active = true;
+      this.cs5.active = false;
+      this.cp5.active = false;
+    } else if (this.comHistory[4] == 1) {
+      this.cr5.active = false;
+      this.cs5.active = true;
+      this.cp5.active = false;
+    } else if (this.comHistory[4] == 2) {
+      this.cr5.active = false;
+      this.cs5.active = false;
+      this.cp5.active = true;
+    }
+  }
+
   onClickConfirmBtn() {
     this.comChoice();
     this.win.active = false;
@@ -174,6 +303,7 @@ export default class NewClass extends cc.Component {
     this.tie.active = false;
     this.checkResult();
     this.countRound++;
+    this.showComHis();
 
     // Player 3 wins
     if (this.playerPoint >= 3) {
@@ -184,6 +314,7 @@ export default class NewClass extends cc.Component {
       this.resultLabel.string = "ชนะ";
       this.pPoint.string = this.playerPoint.toString();
       this.cPoint.string = this.comPoint.toString();
+      this.showComHis();
       console.log("PLAYER WINNER");
       console.log("PPOINT: " + this.playerPoint);
       console.log("CPOINT: " + this.comPoint);
@@ -200,6 +331,7 @@ export default class NewClass extends cc.Component {
       this.resultLabel.string = "แพ้";
       this.pPoint.string = this.playerPoint.toString();
       this.cPoint.string = this.comPoint.toString();
+      this.showComHis();
       console.log("COM WINNER");
       console.log("PLAYER RESULT: " + this.playerHistory);
       console.log("COM RESULT: " + this.comHistory);
@@ -211,6 +343,7 @@ export default class NewClass extends cc.Component {
         this.onDisable();
         // this.playerNameLabel.enabled = true;
         this.resultBoard.active = true;
+
         // this.update("ฃนะ");
         this.resultLabel.string = "ชนะ";
         this.pPoint.string = this.playerPoint.toString();
@@ -262,13 +395,16 @@ export default class NewClass extends cc.Component {
     this.cChoice = 0;
     this.playerPoint = 0;
     this.comPoint = 0;
-    this.playerHistory = [];
-    this.comHistory = [];
+    this.playerHistory = Array();
+    this.comHistory = Array();
     this.countRound = 0;
     this.resultLabel.string = "";
     this.prock.active = true;
     this.pscissor.active = true;
     this.ppaper.active = true;
+    this.cr2.active = false;
+    this.cs2.active = false;
+    this.cp2.active = false;
   }
 
   // update (dt) {}
